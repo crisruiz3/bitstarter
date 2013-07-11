@@ -67,7 +67,7 @@ var clone = function(fn) {
 var buildfn = function(url, checks) {
     var response2console = function(result, response) {
         if (result instanceof Error) {
-            console.error('Error: ' + util.format(response.message));
+            console.error('Error: ' + url + 'no es valida.';
         } else {
             console.error("Wrote %s", url);
             fs.writeFileSync(url, result);
@@ -81,7 +81,8 @@ if(require.main == module) {
     program
         .option('-c, --checks <check_file>', 'Path to checks.json', clone(assertFileExists), CHECKSFILE_DEFAULT)
         .option('-f, --file <html_file>', 'Path to index.html', clone(assertFileExists), HTMLFILE_DEFAULT)
-        .parse(process.argv);
+        .option('-u, --url <URL>', 'URL')
+	.parse(process.argv);
     var checkJson;
     if (program.url){
 	var response2console = buildfn(program.url, program.checks);
