@@ -67,7 +67,7 @@ var clone = function(fn) {
 var buildfn = function(url, checks) {
     var response2console = function(result, response) {
         if (result instanceof Error) {
-            console.error('Error: ' + url + 'no es valida.';
+            console.error('Error: ' + url + 'no es valida.');
         } else {
             console.error("Wrote %s", url);
             fs.writeFileSync(url, result);
